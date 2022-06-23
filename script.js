@@ -25,7 +25,7 @@ function operate(firstNumber, secondNumber, operator){
     else if(operator==="-"){
         return subtract(number1, number2)
 
-    }else if(operator==="*"){
+    }else if(operator==="x"){
         return multiply(number1, number2)
         
     }else if(operator==="/"){
@@ -63,7 +63,19 @@ operationButtons.forEach(button => {
 
 equalButton.addEventListener('click', () => calculate())
 
-clearButton.addEventListener('click', () => clearDisplay(currentOperationDisplay) )
+clearButton.addEventListener('click', () => {
+    clearDisplay(currentOperationDisplay)
+    clearDisplay(lastOperationDisplay)
+    resetVariables()
+
+} )
+
+function resetVariables(){
+    firstNumber = ""
+    secondNumber = ""
+    currentOperator = null
+}
+
 
 
 
@@ -73,21 +85,23 @@ function addNumber(number){
     if(currentOperationDisplay.textContent === "0"){
         currentOperationDisplay.textContent = ""
     }
-    currentOperationDisplay.textContent += number
     if(currentOperator=== null){
+        currentOperationDisplay.textContent += number
         firstNumber+=number
         console.log(`first number = ${firstNumber}`)
-    }else{
+    }else if (currentOperator!== null){
+        currentOperationDisplay.textContent += number
         secondNumber+=number
         console.log(`second number = ${secondNumber}`)
-    }
-
+    };
 }
 
 function addOperator(operator){
     currentOperationDisplay.textContent +=operator
     currentOperator=operator
     console.log(`current operator = ${currentOperator}`)
+
+    lastOperationDisplay.textContent=currentOperationDisplay.textContent
 
 }
 
