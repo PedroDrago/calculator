@@ -31,9 +31,29 @@ function operate(number1, number2, operator){
 
 
 const display = document.querySelector("#display")
-const numbers = document.querySelectorAll(".number")
-const operations = document.querySelectorAll(".operations")
-const allMath = document.querySelectorAll(".math")
+const numberButtons = document.querySelectorAll(".number")
+const operationButtons = document.querySelectorAll(".operations")
+const allMathButtons = document.querySelectorAll(".math")
 const clearButton = document.querySelector("#clear")
 const equalButton = document.querySelector("#equal")
 
+let op = ""
+let characters = ""
+let number = ""
+
+//populate display with inputs -> assign all characters to character variable
+//assign operator to op variable
+allMathButtons.forEach(button  => {
+    button.addEventListener('click', () => {
+        display.textContent += button.id
+        characters += button.id
+        if(button.classList.contains('operations')){
+            op = button.id
+        } else if(button.classList.contains('number')){
+            number += button.id
+        }
+        console.log(op)
+        console.log(characters)
+        console.log(number)
+    })
+})
