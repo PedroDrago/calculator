@@ -65,6 +65,10 @@ equalButton.addEventListener('click', () => {
     display.textContent = operate(leftNumbers, rightNumbers, op)
 })
 
+clearButton.addEventListener('click', () => {
+    display.textContent= ""
+
+})
 
 
 //separete characters with op -> get left number -> get right number -> proceed with
