@@ -29,3 +29,11 @@ function operate(number1, number2, operator){
     }
 }
 
+
+const display = document.querySelector("#display")
+const numbers = document.querySelectorAll(".number")
+const operations = document.querySelectorAll(".operations")
+const allMath = document.querySelectorAll(".math")
+const clearButton = document.querySelector("#clear")
+const equalButton = document.querySelector("#equal")
+
