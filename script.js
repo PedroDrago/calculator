@@ -29,6 +29,14 @@ function operate(number1, number2, operator){
     }
 }
 
+function clear(){
+    op = ''
+    firstNumber = ''
+    secondNumber = ''
+    currentOperation = null
+    display.textContent=""
+}
+
 
 const display = document.querySelector("#display")
 const numberButtons = document.querySelectorAll(".number")
@@ -39,37 +47,50 @@ const equalButton = document.querySelector("#equal")
 
 let op = ""
 let characters = ""
-let number = ""
+let numberOne = ""
+let numberTwo = ""
+let currentOperation = []
+let nextOperation = ""
+let holdResult = 0
+ops = ["+", "-", "*", "/"]
 
-//populate display with inputs -> assign all characters to character variable
-//assign operator to op variable
-allMathButtons.forEach(button  => {
+
+// red numb 1 -> read operator -> read number two -> assign to currentOperation -> read operator -> read number two -> assign to nextOperation -> concatenate with current operationButtons
+
+numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         display.textContent += button.id
-        characters += button.id
-        if(button.classList.contains('operations')){
-            op = button.id
-        } else if(button.classList.contains('number')){
-            number += button.id
-        }
-        // console.log(op)
-        // console.log(characters)
-        // console.log(number)
+        if(op===""){
+            numberOne+=button.id
+            console.log(`number one = ${numberOne}`)
+
+        }else if(op!==""){
+            numberTwo+=button.id
+            console.log(`number two = ${numberTwo}`)
+
+        };
+
+    })
+})
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        display.textContent = button.id
+        op=button.id
+
+        console.log(`op = ${button.id}`)
     })
 })
 
 equalButton.addEventListener('click', () => {
-    let split = characters.split(op)
-    let leftNumbers = parseInt(split[0])
-    let rightNumbers = parseInt(split[1])
-    display.textContent = operate(leftNumbers, rightNumbers, op)
-})
-
-clearButton.addEventListener('click', () => {
-    display.textContent= ""
-
+    currentOperation+=numberOne
+    currentOperation+=op
+    currentOperation+=numberTwo
+    console.log(`current operation = ${currentOperation}`)
+    
+    
 })
 
 
-//separete characters with op -> get left number -> get right number -> proceed with
-//operations
+
+//OPCAO -> MUDAR FUNCOES PRA RECEBER STRING E DENTRO DA FUNCAO FAZER O PROCESSO DE SPLIT E PARSEINT
