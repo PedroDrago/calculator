@@ -52,15 +52,16 @@ allMathButtons.forEach(button  => {
         } else if(button.classList.contains('number')){
             number += button.id
         }
-        console.log(op)
-        console.log(characters)
-        console.log(number)
+        // console.log(op)
+        // console.log(characters)
+        // console.log(number)
     })
 })
 
 equalButton.addEventListener('click', () => {
-    alert("test")
-
+    let split = characters.split(op)
+    let leftNumbers = split[0]
+    let rightNumbers = split[1]
 })
 
 
