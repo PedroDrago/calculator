@@ -57,3 +57,13 @@ allMathButtons.forEach(button  => {
         console.log(number)
     })
 })
+
+equalButton.addEventListener('click', () => {
+    alert("test")
+
+})
+
+
+
+//separete characters with op -> get left number -> get right number -> proceed with
+//operations
