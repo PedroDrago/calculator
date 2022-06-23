@@ -60,8 +60,9 @@ allMathButtons.forEach(button  => {
 
 equalButton.addEventListener('click', () => {
     let split = characters.split(op)
-    let leftNumbers = split[0]
-    let rightNumbers = split[1]
+    let leftNumbers = parseInt(split[0])
+    let rightNumbers = parseInt(split[1])
+    display.textContent = operate(leftNumbers, rightNumbers, op)
 })
 
 
