@@ -18,6 +18,8 @@ let hasPoint = false
 
 
 //eventlisteners
+
+
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         addNumber(button.textContent)

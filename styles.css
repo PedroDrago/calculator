@@ -1,3 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 
 
@@ -5,44 +10,96 @@
 #calculator{
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    width: 500px;
-    border: 2px solid red;
+    width: 500px; 
+    height: 550px;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    border-radius: 10px;
+    background-color: lightgray;
+    /* position: absolute;
+    left: 37%;
+    top: 37%;
+    margin-right: -50%;
+    transform: translate(-50%, -50); */
+
+}
+
+#currentOperationDisplay{
+    font-size: 25px;
+    text-align: center;
+    /* border: 2px solid red; */
+    width: 300px;
+}
+
+#display-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border: 1px solid black;
+    width: 300px;
+    height: 55px;
+    border-radius: 5px;
+    background-color: white;
+
 }
 
 #buttons-container{
     display: flex;
 }
 
-#display-container{
-    height: 50px;
-    border: 2px solid ;
-}
+
 
 #number-container{
     border: 0px solid red;
-    width: 200px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-#operations-container{
-    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 
 button{
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
 }
 
 #last-row-container{
-    width: 200px;
-    border: 0px solid green;
     display: flex;
 }
 
 #zero{
     flex: 1;
+}
+
+
+#operations-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#equal{
+    flex: 1;
 
 }
 
+.number{
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.operations,#point{
+    background-color: lightcoral;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#erase, #clear, #equal{
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+/* all square buttons -> width = x / height = y
+zero button = width = 2x / height = y
+equal button = width = 1x / height = 2y */
