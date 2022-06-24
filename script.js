@@ -1,6 +1,3 @@
-
-
-
 //variables
 const numberButtons = document.querySelectorAll('.number')
 const operationButtons = document.querySelectorAll('.operations')
@@ -44,20 +41,7 @@ window.addEventListener('keydown', keyboardFunction )
 eraseButton.addEventListener('click', eraseCharacter)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //Calculator functions
-
 function addNumber(number){
     if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "can't divide by 0" || currentOperationDisplay.textContent === "NaN"){
         currentOperationDisplay.textContent = ""

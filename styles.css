@@ -1,0 +1,44 @@
+#calculator{
+    padding: 50px;
+    border: 2px solid red;
+}
+#display-container{
+    border: 2px solid green;
+}
+#buttons-container{
+    border: 2px solid purple;
+    display: flex;
+}
+#numbersandlastrow-container{
+    display: flex;
+    flex-direction: column;
+}
+#number-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    border: 2px solid blue;
+}
+#last-row{
+    display: flex;
+    border: 2px solid aqua;
+}
+#operations-container{
+    border: 2px solid brown;
+}
+#functions-container{
+    border: 2px solid yellow;
+}
+
+.number{
+    width: 50px;
+    height: 55px;
+}
+
+/* #zero{
+    flex: 2;
+}
+
+#point{
+    flex: 1;
+} */
