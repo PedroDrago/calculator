@@ -98,11 +98,14 @@ function addNumber(number){
 }
 
 function addOperator(operator){
+    if (currentOperator===null){
     currentOperationDisplay.textContent +=operator
     currentOperator=operator
-    console.log(`current operator = ${currentOperator}`)
-
     lastOperationDisplay.textContent=currentOperationDisplay.textContent
+    console.log(`current operator = ${currentOperator}`)
+}
+    
+
 
 }
 
