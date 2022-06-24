@@ -99,14 +99,23 @@ function addNumber(number){
         console.log(`first number = ${firstNumber}`)
         console.log(`currentOperation = ${currentOPeration}`)
 
-    }else if (currentOperator!== null){
+    }else if(currentOperationDisplay.textContent === `${result}`){
         currentOperationDisplay.textContent += number
         secondNumber+=number
         currentOPeration+=number
         console.log(`second number = ${secondNumber}`)
         console.log(`currentOperation = ${currentOPeration}`)
-    };
+    }
+    else if (currentOperator!== null){
+        currentOperationDisplay.textContent += number
+        secondNumber+=number
+        currentOPeration+=number
+        console.log(`second number = ${secondNumber}`)
+        console.log(`currentOperation = ${currentOPeration}`)
+    }
 }
+
+//adicioar outra condicional para caso o display seja igual ao result -> wipe display
 
 function addOperator(operator){
     if (currentOperator===null){ //if it is first operation
@@ -119,12 +128,15 @@ function addOperator(operator){
     //1 -> calculate firstnumber, secondnumber, operator with calculate () and store in lastoperation
     calculate(firstNumber, secondNumber, currentOperator)
     console.log(`last operation result = ${result}`)
+    currentOperationDisplay.textContent = result
 
-    //2 wipe firstnumber, secondnumber, current operator
+    //2 reassign variables
     firstNumber=result
     secondNumber=""
     currentOperator=operator
     currentOPeration=`${result}${currentOperator}`
+
+    currentOperationDisplay.textContent+=currentOperator
 }
 }
 
