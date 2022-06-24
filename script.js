@@ -34,7 +34,8 @@ function operate(firstNumber, secondNumber, operator){
 }
 
 function calculate(){
-    result = operate(firstNumber, secondNumber, currentOperator)
+    OperationResult =  operate(firstNumber, secondNumber, currentOperator)
+    result = Math.round(OperationResult * 100) / 100
 }
 
 
@@ -84,6 +85,11 @@ function resetVariables(){
     firstNumber = ""
     secondNumber = ""
     currentOperator = null
+    currentOPeration = ""
+    lastOperation = ""
+    result = ""
+
+
 }
 
 //functions
