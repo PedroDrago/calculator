@@ -34,8 +34,8 @@ function operate(firstNumber, secondNumber, operator){
 }
 
 function calculate(){
-    OperationResult =  operate(firstNumber, secondNumber, currentOperator)
-    result = Math.round(OperationResult * 100) / 100
+        OperationResult =  operate(firstNumber, secondNumber, currentOperator)
+        result = Math.round(OperationResult * 100) / 100
 }
 
 
@@ -71,7 +71,12 @@ operationButtons.forEach(button => {
 
 equalButton.addEventListener('click', () => {
     calculate(firstNumber, secondNumber, currentOperator)
-    showResultInDisplay()
+    if(currentOperator === "/" && secondNumber === "0"){
+        currentOperationDisplay.textContent = "can't divide by 0"
+    }else{
+        showResultInDisplay()
+    }
+    resetVariables()
 })
 
 clearButton.addEventListener('click', () => {
@@ -95,7 +100,7 @@ function resetVariables(){
 //functions
 
 function addNumber(number){
-    if(currentOperationDisplay.textContent === "0"){
+    if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "can't divide by 0"){
         currentOperationDisplay.textContent = ""
     }
     if(currentOperator=== null){
@@ -128,21 +133,27 @@ function addOperator(operator){
     currentOperationDisplay.textContent +=operator
     currentOperator=operator
     currentOPeration+=operator
-    console.log(`current operator = ${currentOperator}`)
+    console.log(`current operator = ${currentOperator} ${typeof(currentOperator)}`)
     console.log(`currentOperation = ${currentOPeration}`)
 } else{ //if it isn't first operation
     //1 -> calculate firstnumber, secondnumber, operator with calculate () and store in lastoperation
+
     calculate(firstNumber, secondNumber, currentOperator)
     console.log(`last operation result = ${result}`)
-    currentOperationDisplay.textContent = result
 
+    if(currentOperator === "/" && secondNumber === "0"){
+        currentOperationDisplay.textContent = "can't divide by 0"
+        resetVariables()
+    } else{
+    currentOperationDisplay.textContent = result
+    currentOperationDisplay.textContent+=currentOperator
     //2 reassign variables
     firstNumber=result
     secondNumber=""
     currentOperator=operator
     currentOPeration=`${result}${currentOperator}`
 
-    currentOperationDisplay.textContent+=currentOperator
+    }
 }
 }
 
