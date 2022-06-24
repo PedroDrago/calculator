@@ -92,12 +92,17 @@ clearButton.addEventListener('click', () => {
 })
 
 pointButton.addEventListener('click', () => {
-    if(hasPoint === false){
-        addNumber(pointButton.textContent)
-        hasPoint = true
-    }else{
-        return
-    }
+    if(currentOperator === null && hasPoint === false){
+        firstNumberPointCheck = firstNumber.includes(".")
+        if (firstNumberPointCheck === false){
+            addNumber(pointButton.textContent)
+        }
+    } else if (currentOperator !==null && secondNumber !== ""){
+        secondNumberPointCheck = secondNumber.includes(".")
+        if(secondNumberPointCheck === false){
+            addNumber(pointButton.textContent)
+        }
+    }    
 })
 
 eraseButton.addEventListener('click', () =>{
