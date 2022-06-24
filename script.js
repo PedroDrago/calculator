@@ -100,7 +100,7 @@ function resetVariables(){
 //functions
 
 function addNumber(number){
-    if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "can't divide by 0"){
+    if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "can't divide by 0" || currentOperationDisplay.textContent === "NaN"){
         currentOperationDisplay.textContent = ""
     }
     if(currentOperator=== null){
