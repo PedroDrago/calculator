@@ -22,13 +22,16 @@ let hasPoint = false
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        addNumber(button.textContent)
+        if(currentOperationDisplay.textContent.length < 21){
+            addNumber(button.textContent)
+        }
     })
 })
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-        addOperator(button.textContent)
+        if(currentOperationDisplay.textContent.length < 21){
+        addOperator(button.textContent)}
     })
 })
 
