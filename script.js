@@ -33,6 +33,10 @@ function operate(firstNumber, secondNumber, operator){
     }
 }
 
+function calculate(){
+    result = operate(firstNumber, secondNumber, currentOperator)
+}
+
 
 //variables
 const numberButtons = document.querySelectorAll('.number')
@@ -46,6 +50,8 @@ const clearButton = document.querySelector('#clear')
 let firstNumber = ""
 let secondNumber = ""
 let currentOperator = null
+let currentOPeration = ""
+let lastOperation = ""
 let result
 
 
@@ -89,29 +95,40 @@ function addNumber(number){
     if(currentOperator=== null){
         currentOperationDisplay.textContent += number
         firstNumber+=number
+        currentOPeration+=number
         console.log(`first number = ${firstNumber}`)
+        console.log(`currentOperation = ${currentOPeration}`)
+
     }else if (currentOperator!== null){
         currentOperationDisplay.textContent += number
         secondNumber+=number
+        currentOPeration+=number
         console.log(`second number = ${secondNumber}`)
+        console.log(`currentOperation = ${currentOPeration}`)
     };
 }
 
 function addOperator(operator){
-    if (currentOperator===null){
+    if (currentOperator===null){ //if it is first operation
     currentOperationDisplay.textContent +=operator
     currentOperator=operator
-    lastOperationDisplay.textContent=currentOperationDisplay.textContent
+    currentOPeration+=operator
     console.log(`current operator = ${currentOperator}`)
+    console.log(`currentOperation = ${currentOPeration}`)
+} else{ //if it isn't first operation
+    //1 -> calculate firstnumber, secondnumber, operator with calculate () and store in lastoperation
+    calculate(firstNumber, secondNumber, currentOperator)
+    console.log(`last operation result = ${result}`)
+
+    //2 wipe firstnumber, secondnumber, current operator
+    firstNumber=result
+    secondNumber=""
+    currentOperator=operator
+    currentOPeration=`${result}${currentOperator}`
 }
-    
+}
 
 
-}
-
-function calculate(){
-    result = operate(firstNumber, secondNumber, currentOperator)
-}
 
 function clearDisplay(display){
     if(display.textContent==="0"){
