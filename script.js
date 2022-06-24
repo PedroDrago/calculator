@@ -46,6 +46,7 @@ const clearButton = document.querySelector('#clear')
 let firstNumber = ""
 let secondNumber = ""
 let currentOperator = null
+let result
 
 
 //eventlisteners
@@ -61,7 +62,10 @@ operationButtons.forEach(button => {
     })
 })
 
-equalButton.addEventListener('click', () => calculate())
+equalButton.addEventListener('click', () => {
+    calculate(firstNumber, secondNumber, currentOperator)
+    showResultInDisplay()
+})
 
 clearButton.addEventListener('click', () => {
     clearDisplay(currentOperationDisplay)
@@ -75,9 +79,6 @@ function resetVariables(){
     secondNumber = ""
     currentOperator = null
 }
-
-
-
 
 //functions
 
@@ -106,7 +107,7 @@ function addOperator(operator){
 }
 
 function calculate(){
-    currentOperationDisplay.textContent=operate(firstNumber, secondNumber, currentOperator)
+    result = operate(firstNumber, secondNumber, currentOperator)
 }
 
 function clearDisplay(display){
@@ -117,4 +118,8 @@ function clearDisplay(display){
     }else{
         display.textContent="0"
     }
+}
+
+function showResultInDisplay(){
+    currentOperationDisplay.textContent = result
 }
