@@ -35,7 +35,10 @@ function operate(firstNumber, secondNumber, operator){
 
 function calculate(){
         OperationResult =  operate(firstNumber, secondNumber, currentOperator)
-        result = Math.round(OperationResult * 100) / 100
+        // result = Math.round(OperationResult * 100) / 100
+        resultNumber =  result = Math.round(OperationResult * 100) / 100
+        result = resultNumber.toString()
+
 }
 
 
@@ -46,7 +49,8 @@ const equalButton = document.querySelector('#equal')
 const currentOperationDisplay = document.querySelector('#currentOperationDisplay')
 const lastOperationDisplay = document.querySelector('#lastOperationDisplay')
 const clearButton = document.querySelector('#clear')
-
+const pointButton = document.querySelector('#point')
+const eraseButton = document.querySelector('#erase')
 
 let firstNumber = ""
 let secondNumber = ""
@@ -54,6 +58,7 @@ let currentOperator = null
 let currentOPeration = ""
 let lastOperation = ""
 let result
+let hasPoint = false
 
 
 //eventlisteners
@@ -84,18 +89,38 @@ clearButton.addEventListener('click', () => {
     clearDisplay(lastOperationDisplay)
     resetVariables()
 
-} )
+})
 
-function resetVariables(){
-    firstNumber = ""
-    secondNumber = ""
-    currentOperator = null
-    currentOPeration = ""
-    lastOperation = ""
-    result = ""
+pointButton.addEventListener('click', () => {
+    if(hasPoint === false){
+        addNumber(pointButton.textContent)
+        hasPoint = true
+    }else{
+        return
+    }
+})
+
+eraseButton.addEventListener('click', () =>{
+    currentOPerationLastCharSlice =  currentOPeration.slice(0, -1)
+    currentOPeration = currentOPerationLastCharSlice
+    currentOperationDisplay.textContent = currentOPeration
+
+    if(currentOperator === null){
+        firstNumberLastCharSlice = firstNumber.slice(0, -1)
+        firstNumber = firstNumberLastCharSlice
+        console.log(`first number = ${firstNumber}`)
+
+    }else if (currentOperator !== null && secondNumber === ""){
+        currentOperator= null
+        console.log(`current operator = ${currentOperator}`)
+    } else if (currentOperator !==null && secondNumber !== ""){
+        secondNumberSlice = secondNumber.slice(0, -1)
+        secondNumber = secondNumberSlice
+        console.log(`second number = ${secondNumber}`)
+    }    
+})
 
 
-}
 
 //functions
 
@@ -108,56 +133,51 @@ function addNumber(number){
         firstNumber+=number
         currentOPeration+=number
         console.log(`first number = ${firstNumber}`)
-        console.log(`currentOperation = ${currentOPeration}`)
 
     }else if(currentOperationDisplay.textContent === `${result}`){
         currentOperationDisplay.textContent += number
         secondNumber+=number
         currentOPeration+=number
         console.log(`second number = ${secondNumber}`)
-        console.log(`currentOperation = ${currentOPeration}`)
     }
     else if (currentOperator!== null){
         currentOperationDisplay.textContent += number
         secondNumber+=number
         currentOPeration+=number
         console.log(`second number = ${secondNumber}`)
-        console.log(`currentOperation = ${currentOPeration}`)
+
     }
 }
-
-//adicioar outra condicional para caso o display seja igual ao result -> wipe display
 
 function addOperator(operator){
     if (currentOperator===null){ //if it is first operation
     currentOperationDisplay.textContent +=operator
+
     currentOperator=operator
     currentOPeration+=operator
-    console.log(`current operator = ${currentOperator} ${typeof(currentOperator)}`)
-    console.log(`currentOperation = ${currentOPeration}`)
+
 } else{ //if it isn't first operation
     //1 -> calculate firstnumber, secondnumber, operator with calculate () and store in lastoperation
-
+    
     calculate(firstNumber, secondNumber, currentOperator)
-    console.log(`last operation result = ${result}`)
 
     if(currentOperator === "/" && secondNumber === "0"){
         currentOperationDisplay.textContent = "can't divide by 0"
         resetVariables()
     } else{
     currentOperationDisplay.textContent = result
-    currentOperationDisplay.textContent+=currentOperator
     //2 reassign variables
     firstNumber=result
     secondNumber=""
     currentOperator=operator
+    currentOperationDisplay.textContent+=currentOperator
+
     currentOPeration=`${result}${currentOperator}`
 
     }
 }
+console.log(currentOperator)
 }
-
-
 
 function clearDisplay(display){
     if(display.textContent==="0"){
@@ -172,3 +192,20 @@ function clearDisplay(display){
 function showResultInDisplay(){
     currentOperationDisplay.textContent = result
 }
+
+function resetVariables(){
+    firstNumber = ""
+    secondNumber = ""
+    currentOperator = null
+    currentOPeration = ""
+    lastOperation = ""
+    result = ""
+}
+
+
+
+
+//IF DISPLAY IS IN NaN -> CANT ADD OPERATORS OR POINTS
+
+//if displays show result after equal button being pressed -> should restart calc
+//display being substituied by new first number
