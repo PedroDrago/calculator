@@ -11,20 +11,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 738px;
+    height: 960px;
 }
 
 button{
-    width: 75px;
-    height: 75px;
+    font-size: 19px;
+    width: 97.5px;
+    height: 97.5px;
 }
 
 
 #calculator{
     display: flex;
     flex-direction: column;
-    width: 420px; 
-    height: 550px;
+    width: 546px; 
+    height: 676px;
     border: 2px solid black;
     justify-content: center;
     align-items: center;
@@ -40,8 +41,8 @@ button{
     align-items: center;
     justify-content: center;
     border: 3px solid black;
-    width: 301px;
-    height: 55px;
+    width: 389px;
+    height: 65px;
     border-radius: 5px;
     background-color: #1e2229;
     border-bottom: 0px;
@@ -49,7 +50,7 @@ button{
 }
 
 #currentOperationDisplay{
-    font-size: 25px;
+    font-size: 32.5px;
     text-align: center;
     /* border: 2px solid red; */
     width: 300px;
