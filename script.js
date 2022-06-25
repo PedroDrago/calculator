@@ -16,6 +16,11 @@ let lastOperation = ""
 let result
 let hasPoint = false
 
+// correnctions
+// change + and - buttons position - set them above equal button.
+// correct double = press bug (NaN bug)
+// correct two / in a row divide by zero (infinity bug)
+
 
 //eventlisteners
 
