@@ -1,29 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+body{
+    background-color: #1F1F1F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 738px;
+}
 
+button{
+    width: 75px;
+    height: 75px;
+}
 
 
 #calculator{
     display: flex;
     flex-direction: column;
-    width: 500px; 
+    width: 420px; 
     height: 550px;
     border: 2px solid black;
     justify-content: center;
     align-items: center;
     gap: 0px;
-    border-radius: 10px;
-    background-color: lightgray;
-    /* position: absolute;
-    left: 37%;
-    top: 37%;
-    margin-right: -50%;
-    transform: translate(-50%, -50); */
+    border-radius: 15px;
+    /* background-color: #3F3F37;  */
+    background-color: #2D2D2A; 
+}
 
+#display-container{
+    color: #de541e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    width: 302.5px;
+    height: 55px;
+    border-radius: 5px;
+    background-color: #1e2229;
+    border-bottom: 0px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
 #currentOperationDisplay{
@@ -33,22 +55,14 @@
     width: 300px;
 }
 
-#display-container{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    border: 1px solid black;
-    width: 300px;
-    height: 55px;
-    border-radius: 5px;
-    background-color: white;
 
-}
 
 #buttons-container{
     display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    border-top: 0px;
 }
-
 
 
 #number-container{
@@ -58,19 +72,9 @@
 }
 
 
-button{
-    width: 75px;
-    height: 75px;
-}
-
 #last-row-container{
     display: flex;
 }
-
-#zero{
-    flex: 1;
-}
-
 
 #operations-container{
     display: flex;
@@ -81,24 +85,29 @@ button{
     flex: 1;
 
 }
+#zero{
+    flex: 1;
+}
+
+#erase, #clear, #equal{
+    background-color: #878472;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 
 .number{
-    background-color: lightblue;
+    background-color: #D6D6B1;
     border: 1px solid black;
     border-radius: 5px;
 }
 
 .operations,#point{
-    background-color: lightcoral;
+    background-color: #DE541E;
     border: 1px solid black;
     border-radius: 5px;
 }
 
-#erase, #clear, #equal{
-    background-color: lightgreen;
-    border: 1px solid black;
-    border-radius: 5px;
-}
+
 
 /* all square buttons -> width = x / height = y
 zero button = width = 2x / height = y

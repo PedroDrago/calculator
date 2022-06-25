@@ -35,6 +35,7 @@ operationButtons.forEach(button => {
     })
 })
 
+// equalButton.addEventListener('click', showFinalResult)
 equalButton.addEventListener('click', showFinalResult)
 
 clearButton.addEventListener('click', reset)
@@ -48,7 +49,7 @@ eraseButton.addEventListener('click', eraseCharacter)
 
 //Calculator functions
 function addNumber(number){
-    if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "can't divide by 0" || currentOperationDisplay.textContent === "NaN"){
+    if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "can't divide by 0" || currentOperationDisplay.textContent === "Not an Operation." || currentOperationDisplay.textContent === "NaN" ){
         currentOperationDisplay.textContent = ""
     }
     if(currentOperator=== null){
@@ -164,12 +165,16 @@ function keyboardFunction(e) {
 }
 
 function showFinalResult() {
-    calculate(firstNumber, secondNumber, currentOperator)
-    if(currentOperator === "/" && secondNumber === "0"){
-        currentOperationDisplay.textContent = "can't divide by 0"
-    }else{
-        currentOperationDisplay.textContent = result
+    if(currentOperationDisplay.textContent === "0" || currentOperationDisplay.textContent === "Not an Operation."){
+        currentOperationDisplay.textContent="Not an Operation."
     }
+    else{    
+        calculate(firstNumber, secondNumber, currentOperator)
+            if(currentOperator === "/" && secondNumber === "0"){
+                currentOperationDisplay.textContent = "can't divide by 0"
+    }       else{
+                currentOperationDisplay.textContent = result
+    }}
     resetVariables()
 }
 
